@@ -4,7 +4,7 @@ This repository contains the code, analysis, and predictive modeling workflow to
 
 The project explores the entire quantitative development lifecycle: data acquisition, time-series specific feature engineering, chronological hyperparameter tuning, and rigorous statistical evaluation using the Diebold-Mariano significance test alongside realistic walk-forward backtesting with transaction costs.
 
-## 📌 Project Overview
+## Project Overview
 
 *   **Target Variable:** Daily return of the S&P 500 index on the next trading day ($t+1$).
 *   **Data Source:** Yahoo Finance (`^GSPC`) from January 2021 to December 2025.
@@ -13,7 +13,7 @@ The project explores the entire quantitative development lifecycle: data acquisi
     *   **Walk-Forward Validation** with periodic model refitting every 21 trading days (monthly).
 *   **Key Evaluation Metrics:** MAE & RMSE on returns, Directional Accuracy, MAE converted to index price points, Diebold-Mariano test, and portfolio simulation (backtesting).
 
-## 🛠️ Feature Engineering
+## Feature Engineering
 
 To prevent lookahead bias, all features are calculated strictly using historical data available up to day $t$:
 1.  **Return Lags:** Lag 0 (today's return), Lag 1, Lag 2, and Lag 4.
@@ -23,7 +23,7 @@ To prevent lookahead bias, all features are calculated strictly using historical
 5.  **Volatility:** Rolling standard deviation of returns over a 5-day and 20-day window.
 6.  **Volume Change:** Daily percentage change in trading volume.
 
-## 🤖 Models Evaluated
+## Models Evaluated
 
 *   **Baseline (Historical Mean):** A Dummy Regressor predicting the mean return of the training set.
 *   **Linear Regression:** Standard Ordinary Least Squares (OLS) regression.
@@ -32,7 +32,7 @@ To prevent lookahead bias, all features are calculated strictly using historical
 *   **Random Forest:** A bagging ensemble consisting of 200 decision trees.
 *   **Gradient Boosting:** An additive boosting ensemble (achieved the best static price MAE during testing).
 
-## 📊 Main Results & Key Findings
+## Main Results & Key Findings
 
 ### 1. Static Model Performance (No Refit)
 | Model | MAE return | RMSE return | $R^2$ | Directional Accuracy | MAE Price (Points) |
@@ -59,7 +59,7 @@ Using a basic trading strategy (if predicted return > 0, *Buy/Hold*; otherwise, 
 *   **Gradient Boosting:** $1.125 (33 trades)
 *   **Linear Regression:** $1.081 (108 trades)
 
-## 🚀 Getting Started
+## Getting Started
 
 1.  Clone this repository:
     ```bash
@@ -72,6 +72,4 @@ Using a basic trading strategy (if predicted return > 0, *Buy/Hold*; otherwise, 
     ```
 3.  Open the Jupyter notebook or run the scripts to reproduce the data processing, model training, and backtesting visualizations.
 
-## 📝 License
-This project is distributed under the MIT License. It is intended strictly for educational and research purposes. None of the contents should be construed as professional financial or investment advice.
-```
+It is intended strictly for educational and research purposes. None of the contents should be construed as professional financial or investment advice.
